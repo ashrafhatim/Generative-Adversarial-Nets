@@ -19,7 +19,6 @@ from torch.utils.tensorboard import SummaryWriter # tensorboard
 
 import argparse
 
-from data.urbansound8k import datasets
 from utils import get_model, train, helper
 from models import *
 
