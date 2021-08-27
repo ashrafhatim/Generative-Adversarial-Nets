@@ -19,7 +19,7 @@ from torch.utils.tensorboard import SummaryWriter # tensorboard
 from utils import get_model, train, helper
 
 
-def train(generator, discriminator, optimizer_G, optimizer_D, optimizer_G_scheduler, optimizer_D_scheduler, dataloader, z_dim=100, epochs=200, save_path = SAVE_PATH, tensorboard_path = TENSORBOARD_PATH):
+def train(generator, discriminator, optimizer_G, optimizer_D, optimizer_G_scheduler, optimizer_D_scheduler, dataloader, z_dim=100, epochs=200, save_path = "", tensorboard_path = ""):
   # launch tensorboard
   sw = SummaryWriter(tensorboard_path)
 
