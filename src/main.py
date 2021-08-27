@@ -52,8 +52,8 @@ dataloader = DataLoader(
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")  
 exp_num = args.exp_num 
 epochs = args.epochs
-TENSORBOARD_PATH = args.TENSORBOARD-PATH # dataset folder
-SAVE_PATH = args.SAVE-PATH # save folder
+TENSORBOARD_PATH = args.TENSORBOARD_PATH # dataset folder
+SAVE_PATH = args.SAVE_PATH # save folder
 
 
 generator, discriminator, optimizer_G, optimizer_D, optimizer_G_scheduler, optimizer_D_scheduler = get_model.get_model(1, 1, 100, (1,28,28), lr = 5e-5)
