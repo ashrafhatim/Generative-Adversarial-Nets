@@ -20,7 +20,7 @@ from torch.utils.tensorboard import SummaryWriter # tensorboard
 import argparse
 
 from utils import get_model, train, helper
-from models import *
+from model import *
 
 if __name__=="__main__":
 
