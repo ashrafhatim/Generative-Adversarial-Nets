@@ -16,7 +16,6 @@ import torch
 
 import matplotlib.pyplot as plt
 from torch.utils.tensorboard import SummaryWriter # tensorboard
-from utils import get_model, train, helper
 
 
 def get_model(g_num, d_num, z_dim, img_shape, lr = 5e-5):
