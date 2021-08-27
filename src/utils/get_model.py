@@ -17,8 +17,9 @@ import torch
 import matplotlib.pyplot as plt
 from torch.utils.tensorboard import SummaryWriter # tensorboard
 
+from model import *
 
-def get_model(g_num, d_num, z_dim, img_shape, lr = 5e-5):
+def get_model(g_num, d_num, z_dim, img_shape, lr = 5e-5, device=None):
     def get_generator(num, z_dim, img_shape):
       if num == 1:
         return Generator_1(z_dim, img_shape)
@@ -29,7 +30,7 @@ def get_model(g_num, d_num, z_dim, img_shape, lr = 5e-5):
       else:
         print("choose a valid generator number next time !")
 
-    def get_discriminator(num, img_shape):
+    def get_discriminator(num, img_shape, device=device):
       if num == 1:
         return Discriminator_1(img_shape)
       elif num == 2:
@@ -39,14 +40,14 @@ def get_model(g_num, d_num, z_dim, img_shape, lr = 5e-5):
       else:
         print("choose a valid discriminator number next time !")
 
-    def get_gan(g_num, d_num, z_dim, img_shape ):
+    def get_gan(g_num, d_num, z_dim, img_shape, device=device ):
       generator = get_generator(g_num, z_dim, img_shape)
       discriminator = get_discriminator(d_num, img_shape)  
       generator.to(device)
       discriminator.to(device)
       return generator, discriminator
 
-    def get_optimizers(generator, discriminator, lr = 5e-5):
+    def get_optimizers(generator, discriminator, lr = 5e-5, device=device):
       optimizer_G = torch.optim.RMSprop(generator.parameters(), lr=lr)
       optimizer_G_scheduler = torch.optim.lr_scheduler.StepLR(optimizer_G, step_size=30, gamma=0.1)
       #torch.optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999)) #torch.optim.SGD(generator.parameters(), lr=0.0002, momentum=0.9) #torch.optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
