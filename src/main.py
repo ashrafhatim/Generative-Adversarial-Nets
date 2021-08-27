@@ -56,7 +56,7 @@ TENSORBOARD_PATH = args.TENSORBOARD_PATH # dataset folder
 SAVE_PATH = args.SAVE_PATH # save folder
 
 
-generator, discriminator, optimizer_G, optimizer_D, optimizer_G_scheduler, optimizer_D_scheduler = get_model.get_model(1, 1, 100, (1,28,28), lr = 5e-5)
-train.train(generator, discriminator, optimizer_G, optimizer_D, optimizer_G_scheduler, optimizer_D_scheduler , epochs=epochs, dataloader=dataloader, save_path = SAVE_PATH, tensorboard_path = TENSORBOARD_PATH)
+generator, discriminator, optimizer_G, optimizer_D, optimizer_G_scheduler, optimizer_D_scheduler = get_model.get_model(1, 1, 100, (1,28,28), lr = 5e-5, device=device)
+train.train(generator, discriminator, optimizer_G, optimizer_D, optimizer_G_scheduler, optimizer_D_scheduler , epochs=epochs, dataloader=dataloader, save_path = SAVE_PATH, tensorboard_path = TENSORBOARD_PATH, device=device)
 
 helper.sample_img(generator)
